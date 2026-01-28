@@ -1,0 +1,108 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(120deg, #4e54c8, #8f94fb);
+  height: 100vh;
+}
+
+/* Center container */
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Card */
+.card {
+  background: white;
+  padding: 30px;
+  width: 340px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+/* Headings */
+.card h2 {
+  margin-bottom: 20px;
+  color: #4e54c8;
+}
+
+/* Inputs */
+.card input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* Primary buttons (Login, Register, Verify, Reset) */
+.card button {
+  width: 100%;
+  padding: 10px;
+  background: #4e54c8;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 15px;
+  transition: background 0.3s;
+}
+
+.card button:hover {
+  background: #3c40a0;
+}
+
+/* Secondary buttons (Forgot password, Back) */
+.card .secondary-btn {
+  background: transparent;
+  color: #4e54c8;
+  border: none;
+  margin-top: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.card .secondary-btn:hover {
+  text-decoration: underline;
+}
+
+/* Switch section (Login <-> Register) */
+.switch {
+  margin-top: 18px;
+}
+
+.switch span {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #555;
+}
+
+.switch button {
+  background: none;
+  color: #4e54c8;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.switch button:hover {
+  text-decoration: underline;
+}
+
+/* Small helper text */
+.helper-text {
+  font-size: 13px;
+  color: #666;
+  margin-top: 10px;
+}

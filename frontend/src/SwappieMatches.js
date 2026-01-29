@@ -33,19 +33,28 @@ function SwappieMatches() {
 
   return (
     <div>
-      <h2>Your Matches</h2>
+  <h2>Your Matches</h2>
 
-      {validMatches.length === 0 && <p>No matches found</p>}
+  {validMatches.length === 0 ? (
+    <p>No matches found</p>
+  ) : (
+    <p>
+      ✨ Congratulations! ✨
+       <p>Match found:</p>&nbsp;
+      {validMatches
+        .map((m, index) => {
+          const name =
+            m.user1_unique_id === uniqueId
+              ? m.user2_name
+              : m.user1_name;
 
-      {validMatches.map((m) => (
-        <div key={m.id}>
-          ✨Congratulations Match with{" "}
-          {m.user1_unique_id === uniqueId
-            ? m.user2_name
-            : m.user1_name} ✨.
-        </div>
-      ))}
-    </div>
+          return `${index + 1}. ${name}`;
+        })
+        .join(", ")}
+    </p>
+  )}
+</div>
+
   );
 }
 

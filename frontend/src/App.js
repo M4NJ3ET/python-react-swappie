@@ -7,8 +7,7 @@ import ForgotPassword from "./ForgotPassword";
 import ResetPassword from "./ResetPassword";
 import Workspace from "./Workspace";
 import Profile from "./Profile";
-// import DeleteAccount from "./DeleteAccount";
-// import ChangePassword from "./ChangePassword";
+import HideDetailsButton from "./HideDetailsButton";
 
 function App() {
   const [screen, setScreen] = useState("login"); // login | register | forgot | reset | workspace
@@ -16,13 +15,15 @@ function App() {
   const [userName, setUserName] = useState("");
   const [resetEmail, setResetEmail] = useState("");
   const [user, setUser] = useState(null);
-  // const [deleteAccount, setDeleteAccount] = useState(null);
+ const [page, setPage] = useState("login");
+
 
 
   if (screen === "workspace") {
     return (
       <div className="container">
         <div className="card">
+          <HideDetailsButton setScreen={setScreen}/>
           <Workspace
             user={user}
             onLogout={() => setScreen("login")}
@@ -62,6 +63,8 @@ function App() {
   }
   if(screen ==="profile"){
     return (
+      <div>
+      <HideDetailsButton setScreen={setScreen}/>
       <Profile
         user={user}
         onBack={() => setScreen("login")}
@@ -69,26 +72,9 @@ function App() {
         onForgotPassword={() => setScreen("forgot")}
         // onDeleteAccount={()=>setScreen("DeleteAccount")}
       />
+      </div>
     );
   }
-  // if(screen ==="DeleteAccount"){
-  //   return (
-  //     <DeleteAccount
-  //       user={user}
-  //       // onBack={() => setScreen("login")}
-  //       onProfile={() => setScreen("Profile")}
-  //     />
-  //   );
-  // }
-
-  // if(screen ==="changePassword"){
-  //   return (
-  //     <ChangePassword
-  //       email={user.email}
-  //       onBack={() => setScreen("profile")}
-  //     />
-  //   );
-  // }
 
   return (
     <div className="container">

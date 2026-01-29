@@ -1,60 +1,24 @@
-// import { useState } from "react";
-// import { api } from "./api";
+// @app.delete("/api/delete-account/{unique_id}")
+// def delete_account(unique_id: int, db: Session = Depends(get_db)):
 
-// export default function DeleteAccount({ onDeleted, onBack }) {
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-//   const [loading, setLoading] = useState(false);
+//     # 1. Delete matches related to user
+//     db.query(SwappieMatch).filter(
+//         (SwappieMatch.user1_unique_id == unique_id) |
+//         (SwappieMatch.user2_unique_id == unique_id)
+//     ).delete(synchronize_session=False)
 
-//   const submit = async (e) => {
-//     e.preventDefault();
+//     # 2. Delete swappie profile
+//     db.query(SwappieUser).filter(
+//         SwappieUser.unique_id == unique_id
+//     ).delete(synchronize_session=False)
 
-//     if (!email || !password) {
-//       alert("Please enter email and password");
-//       return;
-//     }
+//     # 3. Delete main user
+//     user = db.query(User).filter(User.unique_id == unique_id).first()
+//     if not user:
+//         raise HTTPException(status_code=404, detail="User not found")
 
-//     const confirmDelete = window.confirm(
-//       "This action is permanent. Are you sure you want to delete your account?"
-//     );
+//     db.delete(user)
 
-//     if (!confirmDelete) return;
+//     db.commit()
 
-//     try {
-//       setLoading(true);
-
-//       const res = await api.post("/delete-account", {
-//         email,
-//         password
-//       });
-
-//       alert(res.data.message || "Account deleted successfully");
-
-//       // 🔴 logout + go to login
-//       onDeleted();
-
-//     } catch (err) {
-//       alert(err.response?.data?.detail || "Delete failed");
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
-//     return(
-
-//         <div className="container">
-//       <div className="card">
-//         <h2>Hi {user.name} ! are you really sure you want to delete your account?</h2>
-//       <button
-//         style={{ marginTop: "20px" }}
-//         onClick={onProfile}
-//       >
-//         Back to Profile
-//       </button>
-      
-
-//       </div>
-
-//     </div>
-    
-//     )
-// }
+//     return {"message": "Account deleted successfully"}

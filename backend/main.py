@@ -234,53 +234,24 @@ def generate_matches(unique_id: int, db: Session):
 
     db.commit()
 
+@app.delete("/api/delete-account/{unique_id}")
+def delete_account(unique_id: int, db: Session = Depends(get_db)):
+    print("DELETE ACCOUNT HIT:", unique_id)
 
+    db.query(SwappieMatch).filter(
+        (SwappieMatch.user1_unique_id == unique_id) |
+        (SwappieMatch.user2_unique_id == unique_id)
+    ).delete(synchronize_session=False)
 
+    db.query(SwappieUser).filter(
+        SwappieUser.unique_id == unique_id
+    ).delete(synchronize_session=False)
 
+    user = db.query(User).filter(User.unique_id == unique_id).first()
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
 
+    db.delete(user)
+    db.commit()
 
-
-
-
-
-
-
-
-
-
-# @app.post("/delete-account")
-# def delete_account(
-#     email: str,
-#     password: str,
-#     db: Session = Depends(get_db)
-# ):          
-#     user = db.query(models.User).filter(models.User.email == email).first()
-#     if not user or not verify_password(password, user.password):
-#         raise HTTPException(status_code=401, detail="Invalid email or password")
-
-#     db.delete(user)
-#     db.commit()
-
-#     return {"message": "Account deleted successfully."}
-
-
-
-# @app.post("/change-password")
-# def change_password(
-#     email: str,
-#     current_password: str,
-#     new_password: str,
-#     confirm_password: str,
-#     db: Session = Depends(get_db)
-# ):
-#     user = db.query(models.User).filter(models.User.email == email).first()
-#     if not verify_password(current_password, user.password):
-#         raise HTTPException(status_code=401, detail="Current password is incorrect")
-
-#     if new_password != confirm_password:
-#         raise HTTPException(status_code=400, detail="New passwords do not match")
-
-#     user.password = hash_password(new_password)
-#     db.commit()
-
-#     return {"message": "Password changed successfully"} 
+    return {"message": "Account deleted successfully"}

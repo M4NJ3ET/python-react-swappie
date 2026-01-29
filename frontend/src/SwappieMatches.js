@@ -23,17 +23,6 @@ function SwappieMatches() {
     fetchMatches();
   }, [uniqueId]);
 
-// useEffect(() => {
-//   if (!uniqueId) return;
-
-//   const fetchMatches = async () => {
-//     const res = await getSwappieMatches(uniqueId);
-//     setMatches(res.data);
-//   };
-
-//   fetchMatches();
-// }, [uniqueId]);
-
 
   if (loading) return <p>Loading matches...</p>;
 
@@ -50,10 +39,10 @@ function SwappieMatches() {
 
       {validMatches.map((m) => (
         <div key={m.id}>
-          Congratulations Match with{" "}
+          ✨Congratulations Match with{" "}
           {m.user1_unique_id === uniqueId
             ? m.user2_name
-            : m.user1_name} ❤️.
+            : m.user1_name} ✨.
         </div>
       ))}
     </div>

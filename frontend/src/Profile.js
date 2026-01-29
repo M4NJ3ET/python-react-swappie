@@ -1,4 +1,4 @@
-export default function Profile({ user, onWorkspace, onForgotPassword, onDeleteAccount}) {
+export default function Profile({ user, onWorkspace, onForgotPassword}) {
   return (
     <div className="container">
       <div className="card">
@@ -20,12 +20,6 @@ export default function Profile({ user, onWorkspace, onForgotPassword, onDeleteA
       >
         Change Password
       </button>
-      {/* <button
-        style={{ marginTop: "20px" }}
-        onClick={onDeleteAccount}
-      >
-        Delete Account
-      </button> */}
 
       </div>
 

@@ -14,3 +14,7 @@ export const saveSwappieProfile = (data) => {
 export const getSwappieMatches = (uniqueId) => {
   return api.get(`/api/swappie/matches/${uniqueId}`);
 };
+
+export const deleteAccount = (uniqueId) => {
+  return api.delete(`/api/delete-account/${uniqueId}`);
+};

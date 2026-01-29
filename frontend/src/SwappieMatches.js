@@ -23,6 +23,18 @@ function SwappieMatches() {
     fetchMatches();
   }, [uniqueId]);
 
+// useEffect(() => {
+//   if (!uniqueId) return;
+
+//   const fetchMatches = async () => {
+//     const res = await getSwappieMatches(uniqueId);
+//     setMatches(res.data);
+//   };
+
+//   fetchMatches();
+// }, [uniqueId]);
+
+
   if (loading) return <p>Loading matches...</p>;
 
   // ✅ FILTER OUT SELF MATCHES

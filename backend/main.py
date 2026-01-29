@@ -1,3 +1,5 @@
+# this is backend/main.py
+
 from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
 from fastapi.middleware.cors import CORSMiddleware

@@ -27,10 +27,37 @@ Backend:
 - Add or update swap details
 - Automatic swap matching logic
 - View available swap matches
+- Delete account with complete data removal
 - Secure handling of environment variables
 
 ---
 
+## 🗑️ Delete Account Feature
+
+Swappie provides users with the ability to permanently delete their account and all associated data.
+
+### How it works
+- A **Delete Account** option is available on the user workspace/profile page.
+- On clicking the button, a confirmation prompt is shown:
+
+  > *“Are you sure you want to delete this account? You will lose all your data.”*
+
+- The account is deleted **only after user confirmation**.
+
+### Data Removal Scope
+Once confirmed, the system permanently deletes:
+- User record from the **main user table**
+- User-related data from the **Swappie details table**
+- User-related data from the **SwapMatch table**
+- All swap matches associated with the user
+
+### Key Highlights
+- The deletion process is **irreversible**
+- Prevents orphan records in the database
+- Ensures data privacy and integrity
+- Protects against accidental deletion via confirmation step
+
+---
 ## Swap Matching Logic
 
 Two users are considered a valid match when:
@@ -41,20 +68,29 @@ Two users are considered a valid match when:
 Duplicate matches and self-matching are prevented.
 
 ---
-
 ## Project Structure
 
 python-react-swappie/
-- backend/
-  - main.py
-  - models.py
-  - database.py
-  - schemas.py
-  - auth.py
-- frontend/
-  - src/
-- .gitignore
-- README.md
+
+├── backend/
+
+│   ├── main.py
+
+│   ├── models.py
+
+│   ├── database.py
+
+│   ├── schemas.py
+
+│   └── auth.py
+
+├── frontend/
+
+│   └── src/
+
+├── .gitignore
+
+└── README.md
 
 ---
 
